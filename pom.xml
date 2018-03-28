@@ -97,6 +97,13 @@
 	</dependencies>
 
 	<build>
+		<extensions>
+			<extension>
+				<groupId>org.springframework.build</groupId>
+				<artifactId>aws-maven-gravity</artifactId>
+				<version>5.1.0</version>
+			</extension>
+		</extensions>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -148,10 +155,26 @@
 		</license>
 	</licenses>
 
-	<scm>
-		<connection>scm:git:https://github.com/spring-projects/aws-maven.git</connection>
-		<url>https://github.com/spring-projects/aws-maven</url>
-	</scm>
+	<distributionManagement>
+		<snapshotRepository>
+			<id>repo.gravity.maven.snapshot</id>
+			<url>s3://repo.gravity.maven/snapshot</url>
+		</snapshotRepository>
+		<repository>
+			<id>repo.gravity.maven</id>
+			<url>s3://repo.gravity.maven/release</url>
+		</repository>
+	</distributionManagement>
+	<repositories>
+		<repository>
+			<id>repo.gravity.maven</id>
+			<url>s3://repo.gravity.maven/release</url>
+		</repository>
+		<repository>
+			<id>repo.gravity.maven.snapshot</id>
+			<url>s3://repo.gravity.maven/snapshot</url>
+		</repository>
+	</repositories>
 
 	<organization>
 		<name>Spring Framework</name>
