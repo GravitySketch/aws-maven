@@ -17,6 +17,8 @@
 package org.springframework.build.aws.maven;
 
 import com.amazonaws.AmazonServiceException;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.*;
 import org.apache.maven.wagon.ResourceDoesNotExistException;
@@ -68,9 +70,12 @@ public final class SimpleStorageServiceWagonIntegrationTest {
     public void regionConnections() throws WagonException {
         SimpleStorageServiceWagon remoteConnectingWagon = new SimpleStorageServiceWagon();
 
+        EnvironmentVariableCredentialsProvider provider = new EnvironmentVariableCredentialsProvider();
+        AWSCredentials credentials = provider.getCredentials();
+
         AuthenticationInfo authenticationInfo = new AuthenticationInfo();
-        authenticationInfo.setUserName(System.getProperty("access.key"));
-        authenticationInfo.setPassword(System.getProperty("secret.key"));
+        authenticationInfo.setUserName(credentials.getAWSAccessKeyId());
+        authenticationInfo.setPassword(credentials.getAWSSecretKey());
 
         for (String bucket : getBuckets()) {
             Repository repository = new Repository("test", String.format("s3://%s/", bucket));
