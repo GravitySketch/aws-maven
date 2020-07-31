@@ -157,22 +157,22 @@
 
 	<distributionManagement>
 		<snapshotRepository>
-			<id>repo.gravity.maven.snapshot</id>
-			<url>s3://repo.gravity.maven/snapshot</url>
+			<id>repos.gravity.maven.snapshot</id>
+			<url>s3://repos.gravity.maven/snapshot</url>
 		</snapshotRepository>
 		<repository>
-			<id>repo.gravity.maven</id>
-			<url>s3://repo.gravity.maven/release</url>
+			<id>repos.gravity.maven</id>
+			<url>s3://repos.gravity.maven/release</url>
 		</repository>
 	</distributionManagement>
 	<repositories>
 		<repository>
-			<id>repo.gravity.maven</id>
-			<url>s3://repo.gravity.maven/release</url>
+			<id>repos.gravity.maven</id>
+			<url>s3://repos.gravity.maven/release</url>
 		</repository>
 		<repository>
-			<id>repo.gravity.maven.snapshot</id>
-			<url>s3://repo.gravity.maven/snapshot</url>
+			<id>repos.gravity.maven.snapshot</id>
+			<url>s3://repos.gravity.maven/snapshot</url>
 		</repository>
 	</repositories>
 
